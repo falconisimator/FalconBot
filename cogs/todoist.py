@@ -3,6 +3,8 @@ from discord.ext import commands
 import todoist
 import datetime
 
+global path
+path = "/falconshare/FalconBot/"
 
 class TodoistCog:
     def __init__(self, bot):
@@ -17,7 +19,7 @@ class TodoistCog:
                 aliases=['todo'])
     @commands.guild_only()
     async def todoist_test(self,ctx):
-        APIkey = get_file_contents("Keys/todoist.txt"))
+        APIkey = open(path+"Keys/todoist.txt", 'r').read().strip()
         try:
             api = todoist.TodoistAPI(APIkey)
             api.sync()

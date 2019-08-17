@@ -7,6 +7,8 @@ import sys, traceback
 
 global debuglv
 debuglv = 0
+global path
+path = "/falconshare/FalconBot/"
 
 
 def get_file_contents(filename):
@@ -21,7 +23,7 @@ def get_file_contents(filename):
     except FileNotFoundError:
         print("'%s' file not found" % filename)
 
-TOKEN = get_file_contents("Keys/BotKey.txt")
+TOKEN = get_file_contents(path+"Keys/BotKey.txt")
 
 all_extensions = [  'cogs.mathTools',
                     'cogs.members',

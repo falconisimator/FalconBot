@@ -2,7 +2,8 @@ import discord
 from discord.ext import commands
 import pyowm
 
-
+global path
+path = "/falconshare/FalconBot/"
 
 
 class WeatherCog:
@@ -18,7 +19,7 @@ class WeatherCog:
     @commands.guild_only()
     async def temp(self, ctx, location):
         try:
-            api_key = get_file_contents("Keys/OWM.txt")
+            api_key = open(path+"Keys/OWM.txt", 'r').read().strip()
             owm = pyowm.OWM(api_key)
             observation = owm.weather_at_place(location)
             w = observation.get_weather()
@@ -30,7 +31,7 @@ class WeatherCog:
     @commands.guild_only()
     async def humidity(self, ctx, location):
         try:
-            api_key = get_file_contents("Keys/OWM.txt")
+            api_key = open(path+"Keys/OWM.txt", 'r').read().strip()
             owm = pyowm.OWM(api_key)
             observation = owm.weather_at_place(location)
             w = observation.get_weather()

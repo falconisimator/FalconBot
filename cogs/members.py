@@ -8,6 +8,8 @@ from mcstatus import MinecraftServer
 
 global datapath
 datapath = '/falconshare/FalconBot/data/'
+global path
+path = "/falconshare/FalconBot/"
 
 class MembersCog:
     def __init__(self, bot):
@@ -27,6 +29,11 @@ class MembersCog:
         server = MinecraftServer.lookup("ericfalcon.net:25566")
         status = server.status()
         await context.send("'ericfalcon.net:25566' has {0} players and replied in {1} ms".format(status.players.online, status.latency))
+
+    @commands.command(name='github')
+    async def github(self, context):
+        await context.send("``https://github.com/falconisimator/FalconBot``")
+    
 
     @commands.command(name='coolbot')
     async def cool_bot(self, context):
@@ -194,9 +201,9 @@ class MembersCog:
                     aliases=['brainbleach','Eyebleach'],)
     async def eyebleach(self,ctx):
         try:
-            reddit = praw.Reddit(client_id='sgOGkL1nvUF-0w',
-                         client_secret=get_file_contents("Keys/praw_secret.txt"),
-                         user_agent=get_file_contents("Keys/praw_id.txt"))
+            reddit = praw.Reddit(client_id= open(path+"Keys/praw_id.txt", 'r').read().strip(),
+                         client_secret=open(path+"Keys/praw_secret.txt", 'r').read().strip(),
+                         user_agent="Mysterious")
             memes_submissions = reddit.subreddit('eyebleach').hot()
             post_to_pick = random.randint(1, 100)
             for i in range(0, post_to_pick):
@@ -211,9 +218,9 @@ class MembersCog:
                     aliases=['Cute','kyoot','kyooot','kyoooot','kyooooot'])
     async def cute(self,ctx):
         try:
-            reddit = praw.Reddit(client_id='sgOGkL1nvUF-0w',
-                         client_secret=get_file_contents("Keys/praw_secret.txt"),
-                         user_agent=get_file_contents("Keys/praw_id.txt"))
+            reddit = praw.Reddit(client_id= open(path+"Keys/praw_id.txt", 'r').read().strip(),
+                         client_secret=open(path+"Keys/praw_secret.txt", 'r').read().strip(),
+                         user_agent="Mysterious")
             subreddits = ['AnimalsBeingJerks',
                             'AnimalTextGifs',
                             'BigCatGifs',
