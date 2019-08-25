@@ -31,7 +31,8 @@ all_extensions = [  'cogs.mathTools',
                     'cogs.controlTools',
                     'cogs.dataTools',
                     'cogs.commitments',
-                    'cogs.Weather']                    
+                    'cogs.Weather',
+                    'cogs.stonks']                    
 try:
     logging.basicConfig( level=logging.INFO,handlers=[logging.FileHandler('/falconshare/FalconBot/log.txt', 'a','utf-8')])
 except:
