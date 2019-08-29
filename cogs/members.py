@@ -24,11 +24,11 @@ class MembersCog:
         """Says when a member joined."""
         await ctx.send(str(member.display_name)+' joined on '+str(member.joined_at))
 
-    @commands.command(name='online')
-    async def online(self, context):
-        server = MinecraftServer.lookup("ericfalcon.net:25566")
-        status = server.status()
-        await context.send("'ericfalcon.net:25566' has {0} players and replied in {1} ms".format(status.players.online, status.latency))
+    # @commands.command(name='online')
+    # async def online(self, context):
+    #     server = MinecraftServer.lookup("ericfalcon.net:25566")
+    #     status = server.status()
+    #     await context.send("'ericfalcon.net:25566' has {0} players and replied in {1} ms".format(status.players.online, status.latency))
 
     @commands.command(name='github')
     async def github(self, context):
@@ -99,12 +99,12 @@ class MembersCog:
             await ctx.send('**`ERROR:`**'+ str(type(e).__name__) +'-'+ str(e))
 
 
-    @commands.command(name ='morehelp',
-                description="Further help",
-                brief="Further help and details of the bot")
-    @commands.guild_only()
-    async def morehelp(self,ctx):
-        await ctx.send("http://ericfalcon.net/falconbot-commands/")
+    # @commands.command(name ='morehelp',
+    #             description="Further help",
+    #             brief="Further help and details of the bot")
+    # @commands.guild_only()
+    # async def morehelp(self,ctx):
+    #     await ctx.send("http://ericfalcon.net/falconbot-commands/")
 
 
     # @client.command(name='decompose',
@@ -485,7 +485,7 @@ class MembersCog:
 
 
     async def on_message(self, message):
-        print(str(message.author)+'@'+message.guild.name+' - '+message.channel.name+': '+message.content)
+        print(str(message.author)+' @ '+message.guild.name+' - '+message.channel.name+' : '+message.content)
         if message.content.lower().__contains__('hi bot'): # can also use in
             await message.channel.send('Hi '+message.author.display_name)
         # if message.content.lower().__contains__('hi erik'):
